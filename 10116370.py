@@ -47,7 +47,7 @@ class GenerateRandomNumber:
     def RNG_print(self):
         _list = self.RNG_mix()
         print('No.\t |     Zi-1      |      Zi       |       Ui      |       Xi      |')
-        print('-----------------------------------------------')
+        print('-----------------------------------------------------------------------')
         for i in range(0,len(_list)):
             print("{}\t | {:.4f} \t | {:.4f} \t | {:.4f} \t | {:.4f} \t |".format(i+1, _list[i]['Zi-1'], _list[i]['Zi'], _list[i]['Ui'], _list[i]['Xi'] ))
 
