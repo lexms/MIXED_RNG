@@ -22,7 +22,7 @@ class GenerateRandomNumber:
         return zi / self.m
 
     def cdf_result(self,u):
-        return pow((3/2)*u,2/3)
+        return pow((3/2*u),(2/3))
 
     def RNG_mix(self):
         _list = []
@@ -30,15 +30,17 @@ class GenerateRandomNumber:
             if i == 0:
                 #Zi-1 = Z0
                 zi = self.mix_RNG_formula(self.z0)
-                u = self.uniform_generate(zi)
-                xi = self.cdf_result(u)
-                _list.append({'Zi-1': self.z0, 'Zi':zi,'U': u, 'Xi': xi})
+                ui = self.uniform_generate(zi)
+                xi = self.cdf_result(ui)
+
+                _list.append({'Zi-1': self.z0, 'Zi':zi,'Ui': ui, 'Xi': xi})
             elif i > 0:
                 Zi_minus_1 = self.mix_RNG_formula(_list[i-1]['Zi-1']) 
                 zi = self.mix_RNG_formula(Zi_minus_1)
-                u = self.uniform_generate(zi)
-                xi = self.cdf_result(u)
-                _list.append({'Zi-1': Zi_minus_1, 'Zi':zi,'U': u, 'Xi': xi})
+                ui = self.uniform_generate(zi)
+                xi = self.cdf_result(ui)
+
+                _list.append({'Zi-1': Zi_minus_1, 'Zi':zi,'Ui': ui, 'Xi': xi})
                 
         return _list
 
@@ -47,7 +49,7 @@ class GenerateRandomNumber:
         print('No.\t |     Zi-1      |      Zi       |       Ui      |       Xi      |')
         print('-----------------------------------------------')
         for i in range(0,len(_list)):
-            print("{}\t | {:.4f} \t | {:.4f} \t | {:.4f} \t | {:.4f} \t |".format(i+1, _list[i]['Zi-1'], _list[i]['Zi'], _list[i]['U'], _list[i]['Xi'] ))
+            print("{}\t | {:.4f} \t | {:.4f} \t | {:.4f} \t | {:.4f} \t |".format(i+1, _list[i]['Zi-1'], _list[i]['Zi'], _list[i]['Ui'], _list[i]['Xi'] ))
 
 
 test = GenerateRandomNumber()
