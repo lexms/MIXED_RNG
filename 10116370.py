@@ -4,12 +4,12 @@
 
 class GenerateRandomNumber:
     def __init__(self):
-        self.a = 231
+        self.a = 7
         self.c = 721
-        self.m = 1693
+        self.m = 128
         self.n = 2
-        self.z0 = 10116370
-        self.count = 300
+        self.z0 = 12357
+        self.count = 10
 
     def mixed_RNG_formula(self, Zi_minus_1):
         a_pow_n = pow(self.a,self.n)
